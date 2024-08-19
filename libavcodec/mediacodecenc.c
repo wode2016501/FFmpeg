@@ -290,12 +290,19 @@ static av_cold int mediacodec_init(AVCodecContext *avctx)
 
     for (int i = 0; i < FF_ARRAY_ELEMS(color_formats); i++) {
         if (avctx->pix_fmt == color_formats[i].pix_fmt) {
+    #define COLOR_FormatYUV420Flexible 0x7f420888
+            if(color_formats[i].color_format==COLOR_FormatYUV420Planar)
+                        ff_AMediaFormat_setInt32(format, "color-format",  COLOR_FormatYUV420Flexible);
+                else
             ff_AMediaFormat_setInt32(format, "color-format",
                                      color_formats[i].color_format);
             break;
         }
     }
-
+//默认hight
+    ff_AMediaFormat_setInt32(format,"profile" ,8);
+    ff_AMediaFormat_setInt32(format,"level", 65536);
+//
     ret = ff_AMediaFormatColorRange_from_AVColorRange(avctx->color_range);
     if (ret != COLOR_RANGE_UNSPECIFIED)
         ff_AMediaFormat_setInt32(format, "color-range", ret);
