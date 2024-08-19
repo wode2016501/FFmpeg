@@ -43,9 +43,10 @@ GPL. Please refer to the LICENSE file for detailed information.
 
 Patches should be submitted to the ffmpeg-devel mailing list using
 `git format-patch` or `git send-email`. Github pull requests should be
-avoided because they are not part of our review process and will be ignored.
+avoided because they are not part of our review process and will be ignored##支持android
 
 
+##修改添加安卓弃用的代码 android mediacode
 c++  libavcodec/mediacodecenc.c
 ```
 251     for (int i = 0; i < FF_ARRAY_ELEMS(color_formats); i++) {
