@@ -47,6 +47,7 @@ avoided because they are not part of our review process and will be ignored##支
 
 
 ##修改添加安卓弃用的代码 android mediacode
+
 c++  libavcodec/mediacodecenc.c
 ```
 251     for (int i = 0; i < FF_ARRAY_ELEMS(color_formats); i++) {
