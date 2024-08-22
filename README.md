@@ -51,7 +51,7 @@ avoided because they are not part of our review process and will be ignored##支
 c++  libavcodec/mediacodecenc.c
 ```
 78 enum {
-79     COLOR_FormatYUV420Planar                              = 0x7f420888,  //修改
+79     COLOR_FormatYUV420Planar                              = 0x13,
 80     COLOR_FormatYUV420SemiPlanar                          = 0x7f420888,  //修改
 81     COLOR_FormatSurface                                   = 0x7F000789,
 82 };
@@ -72,4 +72,9 @@ shell
 
 ```
 sed 's/enabled jni   /enabled jni   #/g'  configure
+./configure --enable-opencl --disable-iconv  --enable-vulkan --disable-bzlib --disable-lzma --disable-libdrm --enable-mediacodec --enable-jni \                                                                                                        --enable-hwaccels \
+--enable-mediacodec \                                                                                                               --enable-decoder=h264_mediacodec \
+--enable-decoder=hevc_mediacodec \
+--enable-decoder=mpeg4_mediacodec  \                                                                                                --enable-decoder=vp8_mediacodec \                                                                                                   --enable-decoder=vp9_mediacodec \
+--enable-decoder=av1_mediacodec
 ```
