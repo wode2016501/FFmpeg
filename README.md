@@ -74,9 +74,13 @@ shell
 
 ```
 sed 's/enabled jni   /enabled jni   #/g'  configure
-./configure --enable-opencl --disable-iconv  --enable-vulkan --disable-bzlib --disable-lzma --disable-libdrm --enable-mediacodec --enable-jni \                                                                                                        --enable-hwaccels \
---enable-mediacodec \                                                                                                               --enable-decoder=h264_mediacodec \
+./configure --enable-opencl --disable-iconv  --enable-vulkan --disable-bzlib --disable-lzma --disable-libdrm --enable-mediacodec --enable-jni \
+--enable-hwaccels \
+--enable-mediacodec \
+--enable-decoder=h264_mediacodec \
 --enable-decoder=hevc_mediacodec \
---enable-decoder=mpeg4_mediacodec  \                                                                                                --enable-decoder=vp8_mediacodec \                                                                                                   --enable-decoder=vp9_mediacodec \
+--enable-decoder=mpeg4_mediacodec  \
+--enable-decoder=vp8_mediacodec \
+--enable-decoder=vp9_mediacodec \
 --enable-decoder=av1_mediacodec
 ```
