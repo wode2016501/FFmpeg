@@ -61,10 +61,10 @@ c++  libavcodec/mediacodecenc.c
 293     ff_AMediaFormat_setInt32(format, "frame-rate", s->fps);
  294     ff_AMediaFormat_setInt32(format, "i-frame-interval", gop);
  295
- 296     if(strcmp(codec_mime,"video/avc")==0){
- 297     ff_AMediaFormat_setInt32(format,"profile" ,8);
- 298     ff_AMediaFormat_setInt32(format,"level", 65536);
- 299     }
+ 296 +    if(strcmp(codec_mime,"video/avc")==0){
+ 297 +    ff_AMediaFormat_setInt32(format,"profile" ,8);
+ 298 +    ff_AMediaFormat_setInt32(format,"level", 65536);
+ 299 +    }
  300     ret = ff_AMediaCodecProfile_getProfileFromAVCodecContext(avctx);
  301     if (ret > 0) {
  302         av_log(avctx, AV_LOG_DEBUG, "set profile to 0x%x\n", ret);                                                              303         ff_AMediaFormat_setInt32(format, "profile", ret);
