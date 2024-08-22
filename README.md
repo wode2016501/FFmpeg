@@ -68,3 +68,8 @@ c++  libavcodec/mediacodecenc.c
  305     ret = ff_AMediaCodecProfile_getProfileFromAVCodecContext(avctx);
  306     if (ret > 0) {
 ```
+shell 
+
+```
+sed 's/enabled jni   /enabled jni   #/g'  configure
+```
