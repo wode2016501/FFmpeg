@@ -50,28 +50,20 @@ avoided because they are not part of our review process and will be ignored##支
 
 c++  libavcodec/mediacodecenc.c
 ```
-251     for (int i = 0; i < FF_ARRAY_ELEMS(color_formats); i++) {
- 252         if (avctx->pix_fmt == color_formats[i].pix_fmt) {
- 253                 //https://developer.android.com/reference/android/media/MediaCodecInfo.CodecCapabilities
- 254 #define COLOR_QCOM_FormatYUV420SemiPlanar 0x7fa30c00
- 255 #define COLOR_FormatYUV420Flexible 0x7f420888
- 256 #define COLOR_FormatYUV420Planar 0x00000013 //19
- 257                 if(color_formats[i].color_format==COLOR_FormatYUV420Planar)
- 258                         ff_AMediaFormat_setInt32(format, "color-format",  COLOR_FormatYUV420Flexible);
- 259                 else
- 260                 ff_AMediaFormat_setInt32(format, "color-format",
- 261                                      color_formats[i].color_format);
- 262             break;
- 263         }
- 264     }
- 265
+78 enum {
+79     COLOR_FormatYUV420Planar                              = 0x7f420888,  //修改
+80     COLOR_FormatYUV420SemiPlanar                          = 0x7f420888,  //修改
+81     COLOR_FormatSurface                                   = 0x7F000789,
+82 };
+83
+                                                                                                       78 enu
 .....
 298     
  299
  300     ff_AMediaFormat_setInt32(format, "frame-rate", s->fps);
  301     ff_AMediaFormat_setInt32(format, "i-frame-interval", gop);
- 302     ff_AMediaFormat_setInt32(format,"profile" ,8);
- 303     ff_AMediaFormat_setInt32(format,"level", 65536);
+ 302  +   ff_AMediaFormat_setInt32(format,"profile" ,8);
+ 303  +   ff_AMediaFormat_setInt32(format,"level", 65536);
  304     //ff_AMediaFormat_setInt32(format,"max-input-size",900000);
  305     ret = ff_AMediaCodecProfile_getProfileFromAVCodecContext(avctx);
  306     if (ret > 0) {
